@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Workout Buddy{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-white shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Workout Buddy</h1>
+            <nav>
+                <a href="/" class="text-gray-900 hover:underline mx-2">Home</a>
+                <a href="/register" class="text-gray-900 hover:underline mx-2">Register</a>
+                <a href="/login" class="text-gray-900 hover:underline mx-2">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        {% block content %}
+     
+        {% endblock %}
+    </main>
+
+  
+</body>
+</html>
