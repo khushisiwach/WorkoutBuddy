@@ -9,18 +9,27 @@
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         Don't have an account?
-        <a href="/register" class="font-medium text-green-700 hover:text-green-600 underline">Sign up</a>
+        <a href="/register" class="font-medium text-black hover:text-black underline">Sign up</a>
       </p>
     </div>
 
-    <div class="bg-white p-8 rounded-lg shadow-md border border-[#123104ff]">
+    <div class="bg-white p-8 rounded-lg shadow-md border border-black">
       <!-- Google Login Button -->
       <div class="mb-6">
-        <a href="#"
-          class="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#123104ff] focus:ring-offset-1">
+        <a href="{% url 'google_login' %}"
+          class="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-black focus:ring-offset-1">
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="h-[18px] w-[18px]">
           Continue with Google
         </a>
+
+          {% if messages %}
+          {% for message in messages %}
+            <div class="text-sm text-{{ message.tags }}-600 mb-2">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
       </div>
 
       <div class="flex w-full items-center gap-2 py-2 text-sm text-slate-600">
@@ -38,7 +47,7 @@
             type="email"
             name="email"
             id="email"
-            class="w-full h-12 border border-gray-300 px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#123104ff]"
+            class="w-full h-12 border border-gray-300 px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
             placeholder="Enter your email"
             required
           />
@@ -50,20 +59,20 @@
             type="password"
             name="password"
             id="password"
-            class="w-full h-12 border border-gray-300 px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#123104ff]"
+            class="w-full h-12 border border-gray-300 px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
             placeholder="Enter your password"
             required
           />
         </div>
 
         <!-- <div class="text-right">
-          <a href="/forgot-password" class="text-sm text-green-700 hover:text-green-600 underline">Reset your password?</a>
+          <a href="/forgot-password" class="text-sm text-black hover:text-black underline">Reset your password?</a>
         </div> -->
 
         <div>
           <button
             type="submit"
-            class="w-full py-2 px-4 bg-[#123104ff] text-white font-semibold rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#123104ff] transition"
+            class="w-full py-2 px-4 bg-black text-white font-semibold rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition"
           >
             Continue
           </button>

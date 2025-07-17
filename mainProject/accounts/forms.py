@@ -1,16 +1,8 @@
 from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 
-
-class RegisterForm(UserCreationForm):
-    name = forms.CharField(max_length=100, required=True)
+class RegisterForm(forms.Form):
     email = forms.EmailField(required=True)
-
-    class Meta:
-        model = User
-        fields = ['name', 'username', 'email', 'password1', 'password2']
-
+    password = forms.CharField(widget=forms.PasswordInput, required=True)
 
 
 class LoginForm(forms.Form):
@@ -18,7 +10,32 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput, required=True)
 
 
+class ProfileForm(forms.Form):
+    full_name = forms.CharField(required=True)
+    age = forms.IntegerField(required=True)
+    gender = forms.ChoiceField(
+        choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
+        required=True
+    )
+    height = forms.FloatField(required=True)
+    weight = forms.FloatField(required=True)
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        fields = ['age', 'gender', 'height', 'weight', 'activity_level', 'goal']
+    activity_level = forms.ChoiceField(
+        choices=[
+            ('sedentary', 'Sedentary'),
+            ('light', 'Lightly Active'),
+            ('moderate', 'Moderately Active'),
+            ('active', 'Active'),
+            ('very_active', 'Very Active'),
+        ],
+        required=True
+    )
+
+    goal = forms.ChoiceField(
+        choices=[
+            ('lose_weight', 'Lose Weight'),
+            ('gain_muscle', 'Gain Muscle'),
+            ('maintain_fitness', 'Maintain Fitness'),
+        ],
+        required=True
+    )
